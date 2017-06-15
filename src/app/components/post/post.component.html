@@ -1,0 +1,17 @@
+<div style="margin:20px 0 80px 0;">
+  <carousel class="slideshow" interval="false">
+    <slide *ngFor="let url of images" style="text-align:center">
+      <img class="img-responsive center-block" style="width:100%" [src]="url" alt="First slide">
+    </slide>
+  </carousel>
+  <accordion>
+    <accordion-group #group>
+      <div accordion-heading>
+        <h3 class="post-title" style="margin-top:5px;">{{title}}</h3>
+        {{excerpt}}
+        <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+      </div>
+      {{content}}
+    </accordion-group>
+  </accordion>
+</div>

@@ -5,18 +5,42 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NewsComponent } from './pages/news/news.component';
+import { WorksComponent } from './pages/works/works.component';
+import { BiographyComponent } from './pages/biography/biography.component';
+import { ContactsComponent } from './pages/contacts/contacts.component';
+import { PagesService } from './services/pages.service';
+import { PostsService } from "./services/posts.service";
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { CarouselModule, AccordionModule } from 'ngx-bootstrap';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NewsComponent,
+    WorksComponent,
+    BiographyComponent,
+    ContactsComponent,
+    PageNotFoundComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule.forRoot(),
+    AccordionModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    PagesService,
+    PostsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
