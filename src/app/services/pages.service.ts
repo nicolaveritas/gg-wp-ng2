@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
+import { Http, Jsonp } from "@angular/http";
 import { environment } from "environments/environment";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
@@ -16,11 +16,12 @@ export class PagesService {
   biography: BehaviorSubject<Page> = new BehaviorSubject<Page>(null);
   contacts: BehaviorSubject<Page> = new BehaviorSubject<Page>(null);
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private jsonp: Jsonp) { }
 
   getPages() {
     this.http.get(`${environment.base_path}/pages`)
       .map(res => res.json())
+      //.do(res => console.log(res))
       .do(res => {
         this.news.next(res.filter(res => res.title.rendered === "News"));
         this.works.next(res.filter(res => res.title.rendered === "Works"));

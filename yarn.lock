@@ -4243,7 +4243,7 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-rxjs@^5.0.1, rxjs@^5.1.0:
+rxjs@^5.0.0, rxjs@^5.0.1, rxjs@^5.1.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.0.tgz#a7db14ab157f9d7aac6a56e655e7a3860d39bf26"
   dependencies:
@@ -5306,6 +5306,16 @@ wordwrap@0.0.2:
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+
+wp-api-angular@^3.0.0-beta8:
+  version "3.0.0-beta8"
+  resolved "https://registry.yarnpkg.com/wp-api-angular/-/wp-api-angular-3.0.0-beta8.tgz#ea04d3908fc9de468e1aff0663944aa1039a611c"
+  dependencies:
+    "@angular/common" "^4.0.0"
+    "@angular/compiler" "^4.0.0"
+    "@angular/platform-browser" "^4.0.0"
+    "@angular/platform-browser-dynamic" "^4.0.0"
+    rxjs "^5.0.0"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

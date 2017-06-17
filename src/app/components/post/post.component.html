@@ -1,17 +1,20 @@
-<div style="margin:20px 0 80px 0;">
+<div style="margin:20px 0 20px 0;">
   <carousel class="slideshow" interval="false">
-    <slide *ngFor="let url of images" style="text-align:center">
-      <img class="img-responsive center-block" style="width:100%" [src]="url" alt="First slide">
+    <slide *ngFor="let img of images" style="text-align:center">
+      <img class="img-responsive center-block" style="width:100%" [src]="img.url" alt="First slide">
+      <div class="caption" *ngIf="img.caption">
+        <p style="color: white" [innerHTML]="img.caption"></p>
+      </div>
     </slide>
   </carousel>
   <accordion>
-    <accordion-group #group>
+    <accordion-group #group [isDisabled]="content === undefined">
       <div accordion-heading>
-        <h3 class="post-title" style="margin-top:5px;">{{title}}</h3>
-        {{excerpt}}
-        <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+        <h3 class="post-title" style="margin-top:5px;" [innerHTML]="title"></h3>
+        <span [innerHTML]="excerpt"></span>
+        <i *ngIf="content !== undefined" class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
       </div>
-      {{content}}
+      <div [innerHTML]="content" *ngIf="content !== undefined"></div>
     </accordion-group>
   </accordion>
 </div>
