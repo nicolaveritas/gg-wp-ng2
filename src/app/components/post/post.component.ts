@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
     this.title = this.post.title.rendered;
     this.images = this.getImagesUrl(this.post.content.rendered)
     this.content = this.getTextContent(this.post.content.rendered);
-    console.log(this.content)
+    // console.log(this.content)
     this.excerpt = this.getExcerpt(this.post.excerpt.rendered);
   }
 

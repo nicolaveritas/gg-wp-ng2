@@ -4,6 +4,9 @@
             <div *ngFor="let post of posts">
                 <app-post [post]="post"></app-post>
             </div>
+            <div style="text-align:right">
+                <button class="right" type="button" class="btn btn-link" (click)="loadMore()" *ngIf="hasMore">More</button>
+            </div>
         </div>
     </div>
 </div>

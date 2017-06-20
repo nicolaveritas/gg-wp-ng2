@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  base_path: "http://localhost:8000/wp-json/wp/v2",
+  base_path: "http://g53eu38l5cf.x10host.com/wp-json/wp/v2",
 };

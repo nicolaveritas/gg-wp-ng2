@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Jsonp } from "@angular/http";
+import { Http } from "@angular/http";
 import { environment } from "environments/environment";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
@@ -16,7 +16,7 @@ export class PagesService {
   biography: BehaviorSubject<Page> = new BehaviorSubject<Page>(null);
   contacts: BehaviorSubject<Page> = new BehaviorSubject<Page>(null);
 
-  constructor(private http: Http, private jsonp: Jsonp) { }
+  constructor(private http: Http) { }
 
   getPages() {
     this.http.get(`${environment.base_path}/pages`)
