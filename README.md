@@ -1,6 +1,8 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+## Deploy for wordpress theme
+
+`ng build --prod --deploy-url="/wp-content/themes/{theme-name}/dist/"`
 
 ## Development server
 
