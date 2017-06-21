@@ -1,8 +1,10 @@
+<app-statement *ngIf="isNewsPage"></app-statement>
+
 <div class="container">
     <div class="row no-gutters">
         <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 align-self-center">
             <div *ngFor="let post of posts">
-                <app-post [post]="post"></app-post>
+                <app-post [post]="post" [isStatement]=false></app-post>
             </div>
             <div style="text-align:right">
                 <button class="right" type="button" class="btn btn-link" (click)="loadMore()" *ngIf="hasMore">More</button>

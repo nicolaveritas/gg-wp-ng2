@@ -13,11 +13,10 @@ export class BiographyComponent implements OnInit {
   page: Page;
   content;
 
-  constructor(private pages: PagesService, private sanitizer:DomSanitizer) {
+  constructor(private pages: PagesService, private sanitizer: DomSanitizer) {
     this.pages.biography.filter(res => res !== null).subscribe(p => {
       this.page = p[0]; 
-      this.content = this.page.content.rendered;
-      //this.content = this.sanitizer.bypassSecurityTrustUrl(this.page.content.rendered);
+      this.content = this.sanitizer.bypassSecurityTrustHtml(this.page.content.rendered);
     });
   }
 

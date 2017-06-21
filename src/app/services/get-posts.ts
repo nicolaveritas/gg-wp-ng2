@@ -14,7 +14,7 @@ export class GetPostsService {
 
   constructor(private http: Http) { }
 
-  init(slug: string) {
+  init(slug: string, postsPerPage: number = 5) {
     this.http.get(`${environment.base_path}/categories?slug=${slug}`)
       .map(res => res.json())
       .subscribe(res => {

@@ -12,6 +12,8 @@
     padding: 0 15px;
 }
 
-.lastPost {
-    margin-bottom: 500px;
+.statement {
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+    padding: 10px;
 }

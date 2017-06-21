@@ -8,6 +8,10 @@ body {
     position: relative;
     margin: 0;
     padding-bottom: 70px;
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 200;
+    /*font-family: 'Dosis', sans-serif !important;*/
+    /*font-family: 'Open Sans Condensed', sans-serif !important;*/
 }
 
 div.loading {
@@ -21,6 +25,7 @@ div.loading p {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     font-family: 'Raleway', sans-serif; 
+    font-weight: 400;
 }
 
 .page-content {
@@ -31,3 +36,17 @@ div.loading p {
     display: none !important;
 }
 
+img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.carousel-control {
+    background-image: none !important;
+    cursor: pointer;
+}
+
+.icon-next, .icon-prev {
+    font-size: 200% !important;
+}

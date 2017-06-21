@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { CarouselModule, AccordionModule } from 'ngx-bootstrap';
 import { PostComponent } from './components/post/post.component';
 import { PostsPageComponent } from './pages/posts-page/posts-page.component';
+import { StatementComponent } from './components/statement/statement.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PostsPageComponent } from './pages/posts-page/posts-page.component';
     ContactsComponent,
     PageNotFoundComponent,
     PostComponent,
-    PostsPageComponent
+    PostsPageComponent,
+    StatementComponent
   ],
   imports: [
     BrowserModule,

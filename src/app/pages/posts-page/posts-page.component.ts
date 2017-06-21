@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Http } from "@angular/http";
 import { GetPostsService } from "app/services/get-posts";
 
@@ -14,10 +14,13 @@ export class PostsPageComponent implements OnInit {
   posts = [];
   hasMore = false;
   service: GetPostsService;
+  isNewsPage
   
-  constructor(private route: ActivatedRoute, private http: Http) { }
+  constructor(private route: ActivatedRoute, private http: Http, private router: Router) { }
 
   ngOnInit() {
+
+    this.isNewsPage = this.router.url === '/news' ? true : false;
     
     this.service = new GetPostsService(this.http)
 
