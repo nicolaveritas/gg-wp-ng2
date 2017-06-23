@@ -9,12 +9,14 @@ export class GetPostsService {
   page = 0;
   numberOfPosts: number;
   numberOfPages: number;
+  postsPerpage: number;
   hasMore$: Subject<boolean> = new Subject<boolean>();
   posts$: Subject<any> = new Subject<any>();
 
   constructor(private http: Http) { }
 
   init(slug: string, postsPerPage: number = 5) {
+    this.postsPerpage = postsPerPage;
     this.http.get(`${environment.base_path}/categories?slug=${slug}`)
       .map(res => res.json())
       .subscribe(res => {

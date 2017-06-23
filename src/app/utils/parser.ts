@@ -54,6 +54,7 @@ export function getImagesUrl(input: string): CarouselImage[] {
       //console.log(`parse failure on url images`)
     }
 
+    
     try {
       captions = input.split('<p')
         .map(e => e.split('</p>'))
@@ -77,4 +78,17 @@ export function getImagesUrl(input: string): CarouselImage[] {
       //console.log(`the post ${this.post.id} has no images`)
     }
     return result;
+  }
+
+  export function GetImagesCaptions(input: string) {
+      var result: string;
+
+      try {
+          result = '<p>' + input.split('<figcaption class="wp-caption-text">')[1].split('</figcaption>')[0] + '</p>';
+      }
+      catch(e) {
+          //console.log(e)
+      }
+
+      return result;
   }

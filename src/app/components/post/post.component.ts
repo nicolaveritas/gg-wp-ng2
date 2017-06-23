@@ -15,17 +15,15 @@ export class PostComponent implements OnInit {
 
   title;
   excerpt;
-  content
+  content;
   images: CarouselImage[];
 
   constructor(private sanitizer:DomSanitizer) { }
 
   ngOnInit() {
-    if (this.post.title.rendered == 'GIUSEPPINA (self-portrait)')
-      console.log(this.post)
-
     this.title = this.post.title.rendered;
     this.images = Utils.getImagesUrl(this.post.content.rendered)
+
     this.content = this.sanitizer.bypassSecurityTrustHtml(Utils.getTextContent(this.post.content.rendered));
     this.excerpt = Utils.getExcerpt(this.post.excerpt.rendered);
   }
