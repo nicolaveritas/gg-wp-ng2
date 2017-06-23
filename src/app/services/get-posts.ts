@@ -27,7 +27,7 @@ export class GetPostsService {
 
   getNextPosts() {
     this.page++;
-    this.http.get(`${environment.base_path}/posts?categories=${this.id}&per_page=5&page=${this.page}`)
+    this.http.get(`${environment.base_path}/posts?categories=${this.id}&per_page=5&page=${this.page}&orderby=date&order=desc`)
       .map(res => res.json())
       .subscribe(res => {
         this.posts$.next(res)
