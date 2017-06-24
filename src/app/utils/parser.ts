@@ -10,6 +10,7 @@ export function getTextContent(input: string) {
             .reduce((result, current) => result.concat(current))
             .map(e => e.split('</div>'))
             .reduce((result, current) => result.concat(current))
+            .filter(e => !e.includes('.mp4') && !e.includes('.mov') && !e.includes('.ogg'))
             .filter(e => e && e.substring(0, 16) !== ' id="attachment_')
             .filter(e => e.indexOf('wp-caption-text') === -1)
             .filter(e => e.indexOf('src="http') === -1)
