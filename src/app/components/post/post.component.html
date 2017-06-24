@@ -3,8 +3,8 @@
   <div *ngIf=!isStatement>
     <carousel class="slideshow" interval="false">
       <slide *ngFor="let img of images" style="text-align:center" [ngSwitch]="img.type">
-        <img *ngSwitchCase="'image'" class="img-responsive center-block" style="width:100%" [src]="img.url">
-        <video *ngSwitchCase="'video'" width="100%" [src]="img.url" controls></video>
+        <img *ngSwitchCase="'image'" (click)="goFullScreen(images, audio)" class="img-responsive center-block" style="width:100%" [src]="img.url">
+        <video *ngSwitchCase="'video'" (click)="goFullScreen(images, audio)" width="100%" [src]="img.url" controls></video>
         <div class="caption" *ngIf="img.caption">
           <p style="color: white" [innerHTML]="img.caption"></p>
         </div>
@@ -12,11 +12,16 @@
     </carousel>
     <div class="audio-container" [innerHTML]="audio" *ngIf="audio.changingThisBreaksApplicationSecurity != undefined"></div>
     <accordion>
-      <accordion-group #group [isDisabled]="content === undefined">
+      <accordion-group #group 
+            [isDisabled]="content === undefined ||
+                          content.changingThisBreaksApplicationSecurity === 'undefined'|| 
+                          content.changingThisBreaksApplicationSecurity === undefined">
         <div accordion-heading>
           <h3 class="post-title" style="margin-top:5px;" [innerHTML]="title"></h3>
           <span [innerHTML]="excerpt"></span>
-          <i *ngIf="content !== undefined" class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+          <i *ngIf="showIcon" 
+              class="pull-right float-xs-right glyphicon" 
+              [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
         </div>
         <div [innerHTML]="content" *ngIf="content !== undefined"></div>
       </accordion-group>

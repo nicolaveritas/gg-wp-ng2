@@ -3,16 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactsComponent } from "./pages/contacts/contacts.component";
 import { BiographyComponent } from "./pages/biography/biography.component";
 import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
-import { PostsPageComponent } from "app/pages/posts-page/posts-page.component";
+import { PostsPageComponent } from "./pages/posts-page/posts-page.component";
+import { FullScreenGalleryComponent } from "./components/full-screen-gallery/full-screen-gallery.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'news',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'news',
+    path: 'home',
     component: PostsPageComponent,
     data: { slug: 'news' }
   },

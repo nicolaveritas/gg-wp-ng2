@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FooterService } from "../../services/footer.service";
 
 @Component({
   selector: 'app-footer',
@@ -8,10 +9,13 @@ import { Component } from '@angular/core';
 export class FooterComponent {
 
   year: number;
+  show: boolean = true;
 
-  constructor() {
+  constructor(public service: FooterService) {
     let date = new Date()
     this.year = date.getFullYear();
+
+    this.service.showFooter$.subscribe(b => { if (b !== null || b !== undefined) this.show = b})
   }
 
 }

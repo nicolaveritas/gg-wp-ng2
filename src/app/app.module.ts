@@ -15,6 +15,8 @@ import { CarouselModule, AccordionModule } from 'ngx-bootstrap';
 import { PostComponent } from './components/post/post.component';
 import { PostsPageComponent } from './pages/posts-page/posts-page.component';
 import { StatementComponent } from './components/statement/statement.component';
+import { FullScreenGalleryComponent } from './components/full-screen-gallery/full-screen-gallery.component';
+import { FooterService } from "./services/footer.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { StatementComponent } from './components/statement/statement.component';
     PageNotFoundComponent,
     PostComponent,
     PostsPageComponent,
-    StatementComponent
+    StatementComponent,
+    FullScreenGalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { StatementComponent } from './components/statement/statement.component';
     AccordionModule.forRoot()
   ],
   providers: [
-    PagesService
+    PagesService,
+    FooterService
   ],
   bootstrap: [AppComponent]
 })

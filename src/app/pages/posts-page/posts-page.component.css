@@ -1,0 +1,29 @@
+.full-screen-gallery {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    background-color: black;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap; 
+}
+
+carousel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.back-btn {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    color: white;
+}

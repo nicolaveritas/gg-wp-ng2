@@ -65,6 +65,8 @@ export function getImagesUrl(input: string): CarouselImage[] {
         .map(e => e.split('</div>'))
         .reduce((result, current) => result.concat(current))
         .filter(e => e && e.substring(0, 16) !== ' id="attachment_')
+        .map(e => e.split('<'))
+        .reduce((result, current) => result.concat(current))
         .filter(e => e.indexOf('wp-caption-text') !== -1)
         .map(e => e = `<p ${e}</p>`)
     }
