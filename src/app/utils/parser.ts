@@ -72,7 +72,7 @@ export function getImagesUrl(input: string): CarouselImage[] {
     }
     
     try {
-      urls.forEach((u, i) => result = result.concat({url: u, caption: captions[i] || null}))
+      urls.forEach((u, i) => result = result.concat({url: u, caption: captions[i] || null, type: 'image'}))
     }
     catch(e) {
       //console.log(`the post ${this.post.id} has no images`)
@@ -90,5 +90,30 @@ export function getImagesUrl(input: string): CarouselImage[] {
           //console.log(e)
       }
 
+      return result;
+  }
+
+  export function getAudio(input: string) {
+      var result;
+      var start = input.indexOf('<audio');
+      if (start > -1) {
+          result = input.substring(start)
+          var end = result.indexOf('</audio>')
+          result = result.substring(0, end + 8)
+      }
+      return result;
+  }
+
+  export function getVideo(input) {
+      var result;
+      if (input.includes('.mp4') || input.includes('.mov') || input.includes('.ogg')) {
+          result = input.split('<')
+            .map(e => e.split('>'))
+            .reduce((result, current) => result.concat(current))
+            .filter(e => e.includes('.mp4') || e.includes('.mov') || e.includes('.ogg'))
+            .map(e => e.substring(3))
+            .map(e => e.substring(0, e.length - 1))
+            .map(e => e = {url: e, caption: null, type: 'video'});
+      }
       return result;
   }

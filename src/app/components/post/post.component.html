@@ -1,21 +1,25 @@
 <div style="margin:20px 0 20px 0;">
 
-  
+
   <div *ngIf=isStatement [innerHTML]="content" class="statement">
-    
+
   </div>
 
 
 
   <div *ngIf=!isStatement>
     <carousel class="slideshow" interval="false">
-      <slide *ngFor="let img of images" style="text-align:center">
-        <img class="img-responsive center-block" style="width:100%" [src]="img.url" alt="First slide">
+      <slide *ngFor="let img of images" style="text-align:center" [ngSwitch]="img.type">
+
+        <img *ngSwitchCase="'image'" class="img-responsive center-block" style="width:100%" [src]="img.url">
+        <video *ngSwitchCase="'video'" width="100%" [src]="img.url" controls></video>
+
         <div class="caption" *ngIf="img.caption">
           <p style="color: white" [innerHTML]="img.caption"></p>
         </div>
       </slide>
     </carousel>
+    <div class="audio-container" [innerHTML]="audio" *ngIf="audio.changingThisBreaksApplicationSecurity != undefined"></div>
     <accordion>
       <accordion-group #group [isDisabled]="content === undefined">
         <div accordion-heading>
