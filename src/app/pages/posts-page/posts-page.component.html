@@ -18,10 +18,10 @@
     
     <carousel class="slideshow" interval="false">
         <slide *ngFor="let img of images" style="text-align:center" [ngSwitch]="img.type">
-            <img *ngSwitchCase="'image'" class="img-responsive center-block" [src]="img.url" style="max-height: 80vh">
+            <img *ngSwitchCase="'image'" class="img-responsive center-block" [src]="img.url" style="max-height: 80vh; max-width: 90vw">
             <video *ngSwitchCase="'video'" width="100%" [src]="img.url" controls style="max-height: 80vh"></video>
-            <div class="caption" *ngIf="img.caption">
-                <p style="color: white" [innerHTML]="img.caption"></p>
+            <div class="caption" *ngIf="img.caption" style="color: white" [innerHTML]="img.caption">
+                
             </div>
         </slide>
     </carousel>

@@ -47,9 +47,10 @@ ul li {
 }
 
 .menu-item {
-    color: #cdcdcd;
+    color: gray;
 }
 
 .active {
     color: black;
+    font-weight: bold;
 }

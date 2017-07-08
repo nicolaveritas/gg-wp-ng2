@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, PlatformRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -15,7 +15,6 @@ import { CarouselModule, AccordionModule } from 'ngx-bootstrap';
 import { PostComponent } from './components/post/post.component';
 import { PostsPageComponent } from './pages/posts-page/posts-page.component';
 import { StatementComponent } from './components/statement/statement.component';
-import { FullScreenGalleryComponent } from './components/full-screen-gallery/full-screen-gallery.component';
 import { FooterService } from "./services/footer.service";
 
 @NgModule({
@@ -29,7 +28,6 @@ import { FooterService } from "./services/footer.service";
     PostComponent,
     PostsPageComponent,
     StatementComponent,
-    FullScreenGalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +35,11 @@ import { FooterService } from "./services/footer.service";
     HttpModule,
     AppRoutingModule,
     CarouselModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
   ],
   providers: [
     PagesService,
-    FooterService
+    FooterService,
   ],
   bootstrap: [AppComponent]
 })
