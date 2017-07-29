@@ -76,6 +76,7 @@ export function getImagesUrl(input: string): CarouselImage[] {
     
     try {
       urls.forEach((u, i) => result = result.concat({url: u, caption: captions[i] || null, type: 'image'}))
+      result.forEach(i =>  i.caption = i.caption.split('>')[1].split('<')[0]);
     }
     catch(e) {
       //console.log(`the post ${this.post.id} has no images`)

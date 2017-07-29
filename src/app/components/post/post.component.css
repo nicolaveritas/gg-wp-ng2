@@ -5,11 +5,11 @@
 }
 
 .caption {
-    background-color: darkgray;
-    height: 35px;
-    line-height: 35px;
+    background-color: #dbdbdb;
     text-align: left;
-    padding: 0 15px;
+    padding: 3px 15px;
+    color:white;
+    position: relative;
 }
 
 .statement {

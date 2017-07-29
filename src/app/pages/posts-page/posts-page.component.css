@@ -27,3 +27,9 @@ carousel {
     right: 25px;
     color: white;
 }
+
+.audio-container {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

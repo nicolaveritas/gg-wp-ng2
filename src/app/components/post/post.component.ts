@@ -34,6 +34,10 @@ export class PostComponent implements OnInit {
       this.showIcon = false;
     
     this.excerpt = Utils.getExcerpt(this.post.excerpt.rendered);
+    console.log(this.excerpt)
+    this.excerpt = this.matchUrl(this.excerpt);
+    console.log(this.excerpt)
+
     this.audio = this.sanitizer.bypassSecurityTrustHtml(Utils.getAudio(this.post.content.rendered));
     var video = Utils.getVideo(this.post.content.rendered)
     if (video !== undefined) {
@@ -44,5 +48,22 @@ export class PostComponent implements OnInit {
 
   goFullScreen(imgs, audio) {
     this.requestFullScreen.emit({images: imgs, audio: audio});
+  }
+
+  matchUrl(input) {
+    var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+    var regex = new RegExp(expression);
+
+    // input = input.substring(3)
+    var words = input.split(' ')//[0].substring(0, input.length - 2 - 3).split(' ')
+    words.map(w => {
+      if(w.match(regex)) {
+        console.log(w)
+        w = `<a href="${w}" target="_blank">${w}</a>`
+        // console.log(w)
+      }
+    });
+    // console.log(words)
+    return words.join(' ')
   }
 }

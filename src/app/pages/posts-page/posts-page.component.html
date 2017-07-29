@@ -20,10 +20,10 @@
         <slide *ngFor="let img of images" style="text-align:center" [ngSwitch]="img.type">
             <img *ngSwitchCase="'image'" class="img-responsive center-block" [src]="img.url" style="max-height: 80vh; max-width: 90vw">
             <video *ngSwitchCase="'video'" width="100%" [src]="img.url" controls style="max-height: 80vh"></video>
-            <div class="caption" *ngIf="img.caption" style="color: white" [innerHTML]="img.caption">
-                
+            <div class="caption" *ngIf="img.caption" style="color: white;word-wrap:break-word;white-space:pre-line;max-width:90vw">
+                {{ img.caption }}
             </div>
         </slide>
     </carousel>
-    <!--<div class="audio-container" [innerHTML]="audio" *ngIf="audio.changingThisBreaksApplicationSecurity != undefined"></div>-->
+    <div class="audio-container" [innerHTML]="audio" *ngIf="audio.changingThisBreaksApplicationSecurity != undefined"></div>
 </div>

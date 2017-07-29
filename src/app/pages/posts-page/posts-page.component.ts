@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Http } from "@angular/http";
 import { GetPostsService } from "app/services/get-posts";
@@ -21,7 +21,11 @@ export class PostsPageComponent implements OnInit {
   audio;
   isFullScreen = false;
   
-  constructor(private route: ActivatedRoute, private http: Http, private router: Router, private footerService: FooterService) { }
+  constructor(private route: ActivatedRoute, 
+              private http: Http, 
+              private router: Router, 
+              private footerService: FooterService,
+              private elRef:ElementRef) { }
 
   ngOnInit() {
     this.isNewsPage = this.router.url === '/home' ? true : false;
@@ -40,6 +44,7 @@ export class PostsPageComponent implements OnInit {
     this.footerService.showFooter$.next(false)
     this.isFullScreen = true;
     this.images = data.images;
+    // this.images.forEach(i =>  i.caption = i.caption.split('>')[1].split('<')[0]);
     this.audio = data.audio;
   }
 
