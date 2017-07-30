@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 import { environment } from "environments/environment";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -19,16 +19,26 @@ export class PagesService {
   constructor(private http: Http) { }
 
   getPages() {
-    this.http.get(`${environment.base_path}/pages`)
+    this.http.get(`${environment.base_path_prod}/pages`)
       .map(res => res.json())
       //.do(res => console.log(res))
-      .do(res => {
-        this.news.next(res.filter(res => res.title.rendered === "News"));
-        this.works.next(res.filter(res => res.title.rendered === "Works"));
-        this.biography.next(res.filter(res => res.title.rendered === "Biography"));
-        this.contacts.next(res.filter(res => res.title.rendered === "Contacts"));
-      })
-      .subscribe(res => this.pages = res);
+      .do(res => this.pushPages$(res))
+      .subscribe(
+        res => this.pages = res,
+        err => {
+          this.http.get(`${environment.base_path_dev}/pages`)
+            .map(res => res.json())
+            .do(res => this.pushPages$(res))
+            .subscribe(res => this.pages = res)
+        }
+      );
+  }
+
+  pushPages$(res) {
+    this.news.next(res.filter(res => res.title.rendered === "News"));
+    this.works.next(res.filter(res => res.title.rendered === "Works"));
+    this.biography.next(res.filter(res => res.title.rendered === "Biography"));
+    this.contacts.next(res.filter(res => res.title.rendered === "Contacts"));
   }
 
 }

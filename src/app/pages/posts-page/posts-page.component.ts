@@ -40,7 +40,6 @@ export class PostsPageComponent implements OnInit {
   }
 
   handleFullScreenRequest(data) {
-    console.log(data)
     this.footerService.showFooter$.next(false)
     this.isFullScreen = true;
     this.images = data.images;

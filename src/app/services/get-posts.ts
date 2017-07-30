@@ -17,23 +17,40 @@ export class GetPostsService {
 
   init(slug: string, postsPerPage: number = 5) {
     this.postsPerpage = postsPerPage;
-    this.http.get(`${environment.base_path}/categories?slug=${slug}`)
+    this.http.get(`${environment.base_path_prod}/categories?slug=${slug}`)
       .map(res => res.json())
-      .subscribe(res => {
-        this.id = res[0].id;
-        this.numberOfPosts = res[0].count;
-        this.numberOfPages = this.numberOfPosts / 5
-        this.getNextPosts()
-      })
+      .subscribe(
+        res => this.parseCategories(res),
+        err => {
+          this.http.get(`${environment.base_path_dev}/categories?slug=${slug}`)
+            .map(res => res.json())
+            .subscribe(res => this.parseCategories(res))
+        }
+    )
   }
 
   getNextPosts() {
     this.page++;
-    this.http.get(`${environment.base_path}/posts?categories=${this.id}&per_page=5&page=${this.page}&orderby=date&order=desc`)
+    this.http.get(`${environment.base_path_dev}/posts?categories=${this.id}&per_page=5&page=${this.page}&orderby=date&order=desc`)
       .map(res => res.json())
-      .subscribe(res => {
-        this.posts$.next(res)
-        this.numberOfPages > this.page ? this.hasMore$.next(true) : this.hasMore$.next(false)
-      })
+      .subscribe(
+        res => this.parseNextPosts(res),
+        err => {
+          this.http.get(`${environment.base_path_dev}/posts?categories=${this.id}&per_page=5&page=${this.page}&orderby=date&order=desc`)
+            .map(res => res.json())
+            .subscribe(res => this.parseNextPosts(res));
+        })
+  }
+
+  parseCategories(res) {
+    this.id = res[0].id;
+    this.numberOfPosts = res[0].count;
+    this.numberOfPages = this.numberOfPosts / 5
+    this.getNextPosts()
+  }
+
+  parseNextPosts(res) {
+    this.posts$.next(res)
+    this.numberOfPages > this.page ? this.hasMore$.next(true) : this.hasMore$.next(false)
   }
 }

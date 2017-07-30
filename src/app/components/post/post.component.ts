@@ -34,9 +34,9 @@ export class PostComponent implements OnInit {
       this.showIcon = false;
     
     this.excerpt = Utils.getExcerpt(this.post.excerpt.rendered);
-    console.log(this.excerpt)
+    // console.log(this.excerpt)
     this.excerpt = this.matchUrl(this.excerpt);
-    console.log(this.excerpt)
+    // console.log(this.excerpt)
 
     this.audio = this.sanitizer.bypassSecurityTrustHtml(Utils.getAudio(this.post.content.rendered));
     var video = Utils.getVideo(this.post.content.rendered)
@@ -58,7 +58,7 @@ export class PostComponent implements OnInit {
     var words = input.split(' ')//[0].substring(0, input.length - 2 - 3).split(' ')
     words.map(w => {
       if(w.match(regex)) {
-        console.log(w)
+        // console.log(w)
         w = `<a href="${w}" target="_blank">${w}</a>`
         // console.log(w)
       }
